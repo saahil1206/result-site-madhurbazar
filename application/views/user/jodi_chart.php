@@ -878,6 +878,21 @@
 	}
 </style>
 
+<div class="container-fluid">
+	<div class="col-lg-6 col-lg-offset-3">
+		<?php
+		if ($meta) {
+			if (!empty($meta->page_title)) {
+				echo '<h1 class="mb-3">' . $meta->page_title . '</h1>';
+			}
+			if (!empty($meta->sub_heading)) {
+				echo '<p class="mb-3">' . $meta->sub_heading . '</p>';
+			}
+		}
+		?>
+	</div>
+</div>
+
 <center>
 	<button onclick="$('html, body').animate({scrollTop: $('#bottom-div').offset().top}, 200);" class="button2">
 		Go to Bottom
@@ -1106,5 +1121,14 @@
 				</button>
 			</div>
 		</center>
+
+		<?php
+		if ($meta) {
+			if (!empty($meta->page_html)) {
+				echo '<div style="margin-top:4rem;margin-bottom:5rem;">' . $meta->page_html . '</div>';
+			}
+		}
+		?>
+
 	</div>
 </div>

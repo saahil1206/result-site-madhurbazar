@@ -10,7 +10,13 @@ error_reporting(0);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <link rel="preconnect" href="<?php echo base_url() ?>">
-  
+  <?php
+  if ($meta) {
+    if (!empty($meta->meta_header)) {
+      echo $meta->meta_header;
+    }
+  }
+  ?>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&amp;display=swap" rel="stylesheet">
   <link href="<?php echo base_url('assets1/front/css/style-all-new.css'); ?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url('assets1/front/css/responsive.css'); ?>" rel="stylesheet" type="text/css">

@@ -741,3 +741,11 @@
     </div>
   </div>
 </div>
+
+<?php
+if ($meta) {
+  if (!empty($meta->page_html)) {
+    echo '<div class="container-fluid"><div style="margin-top:4rem;margin-bottom:5rem;font-style: normal;">' . $meta->page_html . '</div></div>';
+  }
+}
+?>

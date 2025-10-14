@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 error_reporting(0);
 
@@ -28,6 +26,8 @@ class Home extends CI_Controller
 		$data['gussing'] = $this->Model_home->getluckynumber();
 		$data['noticedata'] = $this->Model_home->getnotice();
 		$data["flotting_url"] = $this->Model_home->getFlottingUrl();
+
+		$data['meta'] = $this->Model_home->get_meta(0, 'home');
 
 		$this->load->view('home/header', $data);
 		$this->load->view('home/index', $data);
