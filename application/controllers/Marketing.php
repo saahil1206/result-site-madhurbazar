@@ -1,47 +1,18 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-// class Marketing extends CI_Controller {
-
-//     public function __construct() {
-//         parent::__construct();
-//         $this->load->model('Marketing_model');
-//     }
-
-//     // API call to get popup data
-//     public function popup() {
-//           $site_name =  "madhuarbaza.com";
-//         // $site_name = $_SERVER['HTTP_HOST']; // e.g. madhuarbaza.com
-//         $popup_data = $this->Marketing_model->get_popup_data($site_name);
-
-//         if ($popup_data) {
-//             echo json_encode([
-//                 'status' => 'success',
-//                 'redirect_url' => $popup_data['redirect_url']
-//             ]);
-//         } else {
-//             echo json_encode([
-//                 'status' => 'error',
-//                 'redirect_url' => 'https://www.playmaxx.club'
-//             ]);
-//         }
-//     }
-// }
-
-// new 
-
-
-
-class Marketing extends CI_Controller {
-
-    public function __construct() {
+class Marketing extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Marketing_model');
         $this->load->model('Marketing_lead_model');
     }
 
     // GET / POST (AJAX) -> returns JSON with redirect_url
-    public function popup() {
+    public function popup()
+    {
         $site_name = "madhuarbaza.com"; // or use $_SERVER['HTTP_HOST']
         $popup_data = $this->Marketing_model->get_popup_data($site_name);
 
@@ -58,12 +29,13 @@ class Marketing extends CI_Controller {
         }
 
         return $this->output
-                    ->set_content_type('application/json')
-                    ->set_output(json_encode($resp));
+            ->set_content_type('application/json')
+            ->set_output(json_encode($resp));
     }
 
     // POST endpoint to save lead and return redirect_url
-    public function submit() {
+    public function submit()
+    {
         // Expecting form-data POST (FormData). Use $this->input->post()
         $fullname  = $this->input->post('fullname', true);
         $email     = $this->input->post('email', true);
@@ -72,7 +44,7 @@ class Marketing extends CI_Controller {
 
         // Basic validation
         if (empty($fullname) || empty($email) || empty($mobile_no)) {
-            $resp = ['status'=>'error', 'message'=>'Missing required fields', 'redirect_url'=>'https://www.playmaxx.club'];
+            $resp = ['status' => 'error', 'message' => 'Missing required fields', 'redirect_url' => 'https://www.playmaxx.club'];
             return $this->output->set_content_type('application/json')->set_output(json_encode($resp));
         }
 
@@ -91,7 +63,7 @@ class Marketing extends CI_Controller {
 
         $redirect_url = $popup_data && !empty($popup_data['redirect_url']) ? $popup_data['redirect_url'] : 'https://www.playmaxx.club';
 
-        $resp = ['status'=>'success', 'redirect_url'=>$redirect_url];
+        $resp = ['status' => 'success', 'redirect_url' => $redirect_url];
 
         return $this->output->set_content_type('application/json')->set_output(json_encode($resp));
     }
