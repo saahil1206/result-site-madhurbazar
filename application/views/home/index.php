@@ -696,11 +696,11 @@
 <div class="container-fluid">
   <div class="head head2" id="pc">
     <h2 style="background-color:#342e36; font-size: 25px; font-weight: bold; font-size: 25px; color: yellow;">
-      madhurbazar madhur Kalyan main Matka Result</h2>
+      <?= $this->config->item('domain_name'); ?> madhur Kalyan main Matka Result</h2>
     <h4 class="borderwa"> India's No.1 Matka Site Heartly Welcome. Here You Will
       Get Perfect Guessing By Top Guesser And Fast Matka Result. Aaj Ka Satta Kalyan Fix
       Single Jodi Free Update Here You Find Top Matka Market Of India Kalyan Main Milan Rajdhani* *kalyan Matka Tips *fast Matka Result
-      *kalyan Main Rajdhani Matka Chart *Matka Guessing By madhurbazar.com By App Best Matka Site By madhurbazar.com</h4>
+      *kalyan Main Rajdhani Matka Chart *Matka Guessing By <?= $this->config->item('site_domain'); ?> By App Best Matka Site By <?= $this->config->item('site_domain'); ?></h4>
   </div>
 </div>
 <div class="container-fluid">
