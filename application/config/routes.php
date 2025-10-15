@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'home/error';
 $route['translate_uri_dashes'] = FALSE;
 $route['Login/customerLogin'] = 'Login/customerLogin';
 $route['User'] = 'User/index';
@@ -67,9 +67,8 @@ $route['Family/index'] = 'Family/index';
 $route['AllPatti/index'] = 'AllPatti/index';
 $route['Jodi/index'] = 'Jodi/index';
 $route['panel-chart/(:any)'] = 'home/panel_chart_by_slug/$1';
-
 $route['jodi-chart/(:any)'] = 'home/jodi_chart_by_slug/$1';
-
+$route['(:any)'] = 'home/error';
 
 // $route['owner'] = 'auth/login';
 // $route['superadmin'] = 'auth/login';

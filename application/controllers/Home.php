@@ -95,7 +95,10 @@ class Home extends CI_Controller
 
 		$bazar_record = $this->Model_home->get_bazar_by_name($bazar_name);
 		if (!$bazar_record) {
-			show_404();
+			$this->output->set_status_header(404);
+			$this->output->set_header("X-Robots-Tag: noindex, nofollow", TRUE);
+			$this->load->view('home/404');
+			return;
 		}
 		$id = $bazar_record->id;
 
@@ -125,7 +128,10 @@ class Home extends CI_Controller
 		$this->load->model("Model_home");
 		$bazar_record = $this->Model_home->get_bazar_by_name($bazar_name);
 		if (!$bazar_record) {
-			show_404(); // if bazar not found
+			$this->output->set_status_header(404);
+			$this->output->set_header("X-Robots-Tag: noindex, nofollow", TRUE);
+			$this->load->view('home/404');
+			return;
 		}
 		$id = $bazar_record->id;
 		$data['meta'] = $this->Model_home->get_meta($id, 'pana');
@@ -141,5 +147,13 @@ class Home extends CI_Controller
 		$this->load->view('home/header', $data);
 		$this->load->view('home/panel', $data);
 		$this->load->view('home/footer', $data);
+	}
+
+	public function error()
+	{
+		$this->output->set_status_header('404');
+		$this->output->set_header("X-Robots-Tag: noindex, nofollow", TRUE);
+
+		$this->load->view('home/404');
 	}
 }
