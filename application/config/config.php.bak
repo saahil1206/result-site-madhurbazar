@@ -38,12 +38,12 @@ $config['logo_html'] = '<B STYLE="font-size:50px;color:yellow;">M</B>adhurBazar<
 // $config['site_domain'] = $config['domain_name'] . '.com';
 // $config['logo_html'] = '<B STYLE="font-size:50px;color:yellow;">M</B>adhurBazar<B STYLE="font-size:40px;color:yellow;">1.</b>com';
 
-// $config['site_id'] = '3';
+// $config['site_id'] = '1';
 // $config['domain_name'] = 'sattaa-matka';
 // $config['site_domain'] = $config['domain_name'] . '.com';
 // $config['logo_html'] = '<B STYLE="font-size:50px;color:yellow;">S</B>attaa-Matka<B STYLE="font-size:40px;color:yellow;">.</b>com';
 
-// $config['site_id'] = '4';
+// $config['site_id'] = '2';
 // $config['domain_name'] = 'sattaa-matkaa';
 // $config['site_domain'] = $config['domain_name'] . '.com';
 // $config['logo_html'] = '<B STYLE="font-size:50px;color:yellow;">S</B>attaa-Matkaa<B STYLE="font-size:40px;color:yellow;">.</b>com';
