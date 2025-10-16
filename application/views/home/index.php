@@ -778,8 +778,9 @@ if ($meta) {
         Experience the thrill — Play, Earn & Win with PlayMaxx Club today!
       </p>
       <div style="text-align: center; margin-top: 25px;">
-        <a onclick="closePlaymaxPopup();" href="https://www.playmaxx.club?utm_source=<?= $this->config->item('site_domain'); ?>" target="_blank" style="background: linear-gradient(45deg, #ff006c, #ff5599); color: white; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s;">
-          Join Now
+        <a onclick="closePlaymaxPopup();" href="https://www.playmaxx.club?utm_source=<?= $this->config->item('site_domain'); ?>" target="_blank" class="playmax-join-btn">
+          <span>Join Now</span>
+          <span class="playmax-btn-shine"></span>
         </a>
       </div>
     </div>
@@ -851,6 +852,80 @@ if ($meta) {
   }
 }
 
+/* Fancy Join Now Button Styles */
+.playmax-join-btn {
+  position: relative;
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(45deg, #ff006c, #ff5599, #ff006c);
+  background-size: 200% 200%;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 0, 108, 0.4);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  animation: gradientShift 3s ease infinite, btnPulse 2s ease-in-out infinite;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.playmax-join-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 0, 108, 0.6);
+  background: linear-gradient(45deg, #ff5599, #ff006c, #ff5599);
+}
+
+.playmax-join-btn:active {
+  transform: scale(1.05) translateY(-1px);
+}
+
+.playmax-join-btn span:first-child {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Shine effect */
+.playmax-btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 0 5px 15px rgba(255, 0, 108, 0.4);
+  }
+  50% {
+    box-shadow: 0 5px 25px rgba(255, 0, 108, 0.7), 0 0 30px rgba(255, 0, 108, 0.3);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
 @media (max-width: 600px) {
   .playmax-popup-content {
     width: 95%;
@@ -867,6 +942,11 @@ if ($meta) {
 
   .playmax-popup-body p {
     font-size: 14px !important;
+  }
+
+  .playmax-join-btn {
+    padding: 12px 30px;
+    font-size: 16px;
   }
 }
 </style>
