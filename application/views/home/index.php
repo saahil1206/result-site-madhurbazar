@@ -770,9 +770,9 @@ if ($meta) {
         </p>
       </div>
       <div style="text-align: center; margin: 20px 0;">
-        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;"><strong>✅ Simple.</strong></p>
-        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;"><strong>✅ Safe.</strong></p>
-        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;"><strong>✅ Rewarding.</strong></p>
+        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;font-style: normal;"><strong>✅ Simple.</strong></p>
+        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;font-style: normal;"><strong>✅ Safe.</strong></p>
+        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;font-style: normal;"><strong>✅ Rewarding.</strong></p>
       </div>
       <p style="text-align: center; font-size: 18px; font-weight: bold; color: #ff006c; margin-top: 20px;">
         Experience the thrill — Play, Earn & Win with PlayMaxx Club today!
@@ -811,7 +811,7 @@ if ($meta) {
   max-width: 600px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   animation: slideDown 0.4s ease-out;
-  position: relative;
+  position: relative; 
 }
 
 .playmax-popup-close {
@@ -955,7 +955,7 @@ if ($meta) {
 // Show popup on page load
 window.addEventListener('load', function() {
   // Check if popup should be shown (after 1 hour)
-  var lastShown = localStorage.getItem('playmaxPopupLastShown');
+  var lastShown = null;// localStorage.getItem('playmaxPopupLastShown');
   var currentTime = new Date().getTime();
   var oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
 
