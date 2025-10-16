@@ -876,6 +876,7 @@ if ($meta) {
   transform: scale(1.1) translateY(-3px);
   box-shadow: 0 10px 30px rgba(255, 0, 108, 0.6);
   background: linear-gradient(45deg, #ff5599, #ff006c, #ff5599);
+  color: #FFF;
 }
 
 .playmax-join-btn:active {
