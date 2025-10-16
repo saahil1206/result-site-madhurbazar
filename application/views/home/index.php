@@ -749,3 +749,155 @@ if ($meta) {
   }
 }
 ?>
+
+<!-- PlayMaxx Club Promotion Popup -->
+<div id="playmaxPopup" class="playmax-popup-overlay">
+  <div class="playmax-popup-content">
+    <span class="playmax-popup-close" onclick="closePlaymaxPopup()">&times;</span>
+    <div class="playmax-popup-body">
+      <h2 style="color: #ff006c; text-align: center; margin-bottom: 15px; font-size: 24px; text-shadow: 1px 1px 1px #c681ff;">
+        🎮 Introducing PlayMaxx Club – Your Gateway to Fun & Rewards!
+      </h2>
+      <p style="text-align: center; font-size: 16px; line-height: 1.8; color: #333;">
+        Join the excitement on <strong style="color: #ff006c;">PlayMaxx Club</strong>, the ultimate gaming platform where entertainment meets opportunity!
+      </p>
+      <div style="margin: 20px 0; text-align: center;">
+        <p style="font-size: 18px; color: #1a237e; margin: 10px 0;">
+          <strong>💰 Start with just ₹100</strong> and unlock endless fun.
+        </p>
+        <p style="font-size: 18px; color: #1a237e; margin: 10px 0;">
+          <strong>🎯 Play, enjoy, and earn</strong> through our Refer & Earn program — invite friends, share the joy, and watch your rewards grow!
+        </p>
+      </div>
+      <div style="text-align: center; margin: 20px 0;">
+        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;"><strong>✅ Simple.</strong></p>
+        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;"><strong>✅ Safe.</strong></p>
+        <p style="font-size: 16px; color: #880e4f; margin: 5px 0;"><strong>✅ Rewarding.</strong></p>
+      </div>
+      <p style="text-align: center; font-size: 18px; font-weight: bold; color: #ff006c; margin-top: 20px;">
+        Experience the thrill — Play, Earn & Win with PlayMaxx Club today!
+      </p>
+      <div style="text-align: center; margin-top: 25px;">
+        <a onclick="closePlaymaxPopup();" href="https://www.playmaxx.club?utm_source=<?= $this->config->item('site_domain'); ?>" target="_blank" style="background: linear-gradient(45deg, #ff006c, #ff5599); color: white; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s;">
+          Join Now
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.playmax-popup-overlay {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease-in;
+}
+
+.playmax-popup-content {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe6f2 100%);
+  margin: 5% auto;
+  padding: 0;
+  border: 3px solid #ff006c;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: slideDown 0.4s ease-out;
+  position: relative;
+}
+
+.playmax-popup-close {
+  color: #ff006c;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.playmax-popup-close:hover,
+.playmax-popup-close:focus {
+  color: #880e4f;
+  transform: rotate(90deg);
+}
+
+.playmax-popup-body {
+  padding: 30px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .playmax-popup-content {
+    width: 95%;
+    margin: 10% auto;
+  }
+
+  .playmax-popup-body {
+    padding: 20px;
+  }
+
+  .playmax-popup-body h2 {
+    font-size: 20px !important;
+  }
+
+  .playmax-popup-body p {
+    font-size: 14px !important;
+  }
+}
+</style>
+
+<script>
+// Show popup on page load
+window.addEventListener('load', function() {
+  // Check if popup should be shown (after 1 hour)
+  var lastShown = localStorage.getItem('playmaxPopupLastShown');
+  var currentTime = new Date().getTime();
+  var oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+
+  if (!lastShown || (currentTime - lastShown) > oneHour) {
+    setTimeout(function() {
+      document.getElementById('playmaxPopup').style.display = 'block';
+      // Store the current time when popup is shown
+      localStorage.setItem('playmaxPopupLastShown', currentTime);
+    }, 100); // Show popup after 1 second
+  }
+});
+
+// Close popup function
+function closePlaymaxPopup() {
+  document.getElementById('playmaxPopup').style.display = 'none';
+}
+
+// Close popup when clicking outside of it
+window.onclick = function(event) {
+  var popup = document.getElementById('playmaxPopup');
+  if (event.target == popup) {
+    closePlaymaxPopup();
+  }
+}
+</script>
