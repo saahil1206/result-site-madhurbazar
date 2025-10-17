@@ -3,11 +3,11 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="g-foot">
         <div class="foot-cont"> 
-          <h4 style="font-family: 'Raleway', Calibri;font-size: 17px;text-align: center;color: yellow;font-weight: 600;">! DISCLAIMER !</h4>
+          <p style="font-family: 'Raleway', Calibri;font-size: 17px;text-align: center;color: yellow;font-weight: 600;margin-top: 10px;margin-bottom: 10px;">! DISCLAIMER !</p>
           <p style="font-size: 12px;text-align: center;color: white;font-family: sans-serif;">Viewing This WebSite Is On Your Own Risk.. All The information Shown On Website Is Sponsored And We Warn You That this is only for entertainment purpose... We Respect All Country Rules/Laws... If You Not Agree With Our Site. Please Quit Our Site Right Now.</p>
         </div>
-        <h4 style="color:white;font-family: 'Raleway', Calibri; text-align:center; padding-bottom:5px;padding-top:15px; font-size:16px;font-size:500;"> 
-          Copyright © <?php echo date('Y')?> <?= $this->config->item('site_domain'); ?>.  All Right Reserved.</h4>
+        <p style="color:white;font-family: 'Raleway', Calibri;text-align:center;padding-bottom:5px;padding-top:15px;font-size:16px;margin-top: 10px;margin-bottom: 10px;font-weight: 500;line-height: 1.1;"> 
+          Copyright © <?php echo date('Y')?> <?= $this->config->item('site_domain'); ?>.  All Right Reserved.</p>
       </div>
     </div>
   </div>

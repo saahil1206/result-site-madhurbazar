@@ -39,6 +39,11 @@
     left: 10px;
     text-align: center;
     font-family: monospace;
+    margin-top: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.1;
   }
 
   .cm-patti h4 {
@@ -66,40 +71,60 @@
     border-right: 1px solid #e91e63;
   }
 
-  .matka-result h4 {
+  .matka-result .live-result-header {
     background-color: #1a237e !important;
     color: #fff;
     padding-top: 2px;
     padding-bottom: 4px;
     font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.1;
   }
 </style>
 
 <style type="text/css">
-  .satta-result {}
+  .cm-patti table th b,
+  .cm-patti table td b {
+    font-size: 15px;
+    color: #ff0;
+    text-shadow: 1px 1px 3px #000000;
+  }
 
-  .satta-result h4 {
+  .satta-result .game-name-row {
     font-size: 22px;
     background-color: transparent;
     color: #1a237e;
-    text-shadow: 1px 1px #d9d9d9
+    text-shadow: 1px 1px #d9d9d9;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.1;
+    border-bottom: none;
   }
 
-  .satta-result h5 {
+  .satta-result .game-data-row {
     margin: 0;
     font-size: 22px;
     background-color: transparent;
     color: #880e4f;
     text-shadow: 1px 1px #0000001f;
-    line-height: 1
+    line-height: 1;
+    font-weight: 500;
+    border-bottom: none;
   }
 
-  .satta-result h6 {
+  .satta-result .game-timeing-row {
     color: #7a028d;
     font-size: 15px;
     padding: 2px 0;
     text-shadow: 1px 1px 2px #c4c4c4;
-    margin-bottom: 0
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-weight: 500;
+    line-height: 1.1;
+    border-bottom: none;
   }
 
   .satta-result div {
@@ -221,7 +246,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <div style="display:flex;padding:5px;align-items:center;border:1px solid #eb008b;border-radius:10px 0 10px 10px;justify-content:space-between;margin-bottom:2px;margin-top:-40px;">
-  <img src="<?php echo base_url(); ?>images/test6.png" alt="dpboss net LAXMI_PICTURE" width="90" height="68">
+  <img src="<?php echo base_url(); ?>images/test6.webp" alt="dpboss net LAXMI_PICTURE" width="90" height="68">
   <marquee style="color: black;">
     <?php
     foreach ($noticedata->result() as $row) {
@@ -234,9 +259,9 @@
 </div>
 <div style="border: 0px solid #eb008b;border-radius: 10px 0 10px 10px;margin-bottom: 2px;">
   <div class="matka-result">
-    <h4>
+    <div class="live-result-header game-name-row">
       <center>☔LIVE RESULT☔</center>
-    </h4>
+    </div>
     <div class="matka-card">
       <div class="container-fluid">
         <div class="row gold-res-area">
@@ -379,41 +404,25 @@
     <h1>
       <center>Today Lucky Number</center>
     </h1>
-    <table class="table table-bordered">
-      <tr>
-        <th>
-          <h6><b>AAKDA</b></h6>
-        </th>
-        <th>
-          <h6><b>PANA</b></h6>
-        </th>
-        <th>
-          <h6><b>JODI</b></h6>
-        </th>
-        <th>
-          <h6><b>MOTOR</b></h6>
-        </th>
-      </tr>
-      <?php
-      foreach ($gussing->result() as $row) {
-      ?>
+    <table class="table table-bordered" style="text-align: left;">
+      <thead>
         <tr>
-          <th>
-            <h6><b><?php echo $row->aakda; ?></b></h6>
-          </th>
-          <th>
-            <h6><b><?php echo $row->pana; ?></b></h6>
-          </th>
-          <th>
-            <h6><b><?php echo $row->jodi; ?></b></h6>
-          </th>
-          <th>
-            <h6><b><?php echo $row->motor; ?></b></h6>
-          </th>
+          <th><b>AAKDA</b></th>
+          <th><b>PANA</b></th>
+          <th><b>JODI</b></th>
+          <th><b>MOTOR</b></th>
         </tr>
-      <?php
-      }
-      ?>
+      </thead>
+      <tbody>
+        <?php foreach ($gussing->result() as $row): ?>
+          <tr>
+            <td><b><?= $row->aakda; ?></b></td>
+            <td><b><?= $row->pana; ?></b></td>
+            <td><b><?= $row->jodi; ?></b></td>
+            <td><b><?= $row->motor; ?></b></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
     </table>
   </div>
 </div>
@@ -583,46 +592,49 @@
               echo '<br>';
           ?>
               <div class="satta-result" style="border-color: #aa00c0;">
-                <div <?php if (($row->higlightbazar)) { ?>
-                  style="background-color: #fcec03;margin-top:-15px;" <?php   } else { ?> style="background-color:#ffd9b3;margin-top:-15px;" <?php } ?>>
-                  <?php if ($row->higlightnotice == 1) { ?>
-                    <h5>
-                      <marquee STYLE="color:red;font-weight:bold; font-size:100%;font-style:normal"><B>
-                          <?php echo  $row->Notice; ?>
-                    </h5>
-                    </B>
-                    </marquee>
-                  <?php } else { ?>
+                <div
+                  style="background-color: <?= $row->higlightbazar ? '#fcec03' : '#ffd9b3' ?>; margin-top:-15px;">
 
-                    <h5>
-                      <marquee STYLE="color:black;font-weight:bold; font-size:100%;"><B>
-                          <?php echo  $row->Notice; ?>
-                    </h5>
-                    </B>
-                    </marquee><?php } ?>
+                  <?php if ($row->higlightnotice == 1): ?>
+                    <marquee style="color:red; font-weight:bold; font-size:100%; font-style:normal;">
+                      <p class="game-data-row"><b><?= $row->Notice; ?></b></p>
+                    </marquee>
+                  <?php else: ?>
+                    <marquee style="color:black; font-weight:bold; font-size:100%;">
+                      <p class="game-data-row"><b><?= $row->Notice; ?></b></p>
+                    </marquee>
+                  <?php endif; ?>
+
                   <center>
-                    <h4>
-                      <font size=5px"><b><?php echo $row->bazar_name; ?></b></font>
-                    </h4>
-                    <h5 class="blinking">
-                      <font size="5px"><b style="font-size: 30px;"><?php echo $gameResult ?></b></font>
-                    </h5>
-                    <h6>
-                      <font size="4px"><?php echo date('h:i a', strtotime($row->open_time)); ?> &nbsp;&nbsp; <?php echo date('h:i a', strtotime($row->close_time)); ?></font>
-                    </h6>
+                    <div class="game-name-row" style="padding: 0;">
+                      <font size="5px"><b><?= $row->bazar_name; ?></b></font>
+                    </div>
+                    <div class="game-data-row blinking">
+                      <font size="5px"><b style="font-size: 30px;"><?= $gameResult ?></b></font>
+                    </div>
+                    <div class="game-timeing-row">
+                      <font size="4px">
+                        <?= date('h:i a', strtotime($row->open_time)); ?> &nbsp;&nbsp;
+                        <?= date('h:i a', strtotime($row->close_time)); ?>
+                      </font>
+                    </div>
                   </center>
+
                   <div class="result_timing">
-                    <a href="<?php echo base_url(); ?>jodi-chart/<?php echo preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name));  ?>" class="btn_chart">
+                    <a href="<?= base_url(); ?>jodi-chart/<?= preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name)); ?>" class="btn_chart">
                       <font size="3px">Jodi</font>
                     </a>
                   </div>
+
                   <div class="result_timing_right">
-                    <a href="<?php echo base_url(); ?>panel-chart/<?php echo preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name));  ?>" class="btn_chart">
+                    <a href="<?= base_url(); ?>panel-chart/<?= preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name)); ?>" class="btn_chart">
                       <font size="3px">Panel</font>
                     </a>
                   </div>
+
                 </div>
               </div>
+
           <?php
             }
           }
@@ -652,11 +664,11 @@
           if ($fetch_data->num_rows() > 0) {
             foreach ($fetch_data->result() as $row) {
           ?>
-              <a href="<?php echo base_url(); ?>jodi-chart/<?php echo preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name)); ?>">
-                <li>
+              <li>
+                <a href="<?php echo base_url(); ?>jodi-chart/<?php echo preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name)); ?>">
                   <p><?php echo $row->bazar_name; ?></p>
-                </li>
-              </a>
+                </a>
+              </li>
           <?php
             }
           }
@@ -678,11 +690,11 @@
           if ($fetch_data->num_rows() > 0) {
             foreach ($fetch_data->result() as $row) {
           ?>
-              <a href="<?php echo base_url(); ?>panel-chart/<?php echo preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name)); ?>">
-                <li>
+              <li>
+                <a href="<?php echo base_url(); ?>panel-chart/<?php echo preg_replace('/[^0-9a-zA-Z]/', '-', strtolower($row->bazar_name)); ?>">
                   <p><?php echo $row->bazar_name; ?></p>
-                </li>
-              </a>
+                </a>
+              </li>
           <?php
 
             }
@@ -697,10 +709,10 @@
   <div class="head head2" id="pc">
     <h2 style="background-color:#342e36; font-size: 25px; font-weight: bold; font-size: 25px; color: yellow;">
       <?= $this->config->item('domain_name'); ?> madhur Kalyan main Matka Result</h2>
-    <h4 class="borderwa"> India's No.1 Matka Site Heartly Welcome. Here You Will
+    <p class="borderwa"> India's No.1 Matka Site Heartly Welcome. Here You Will
       Get Perfect Guessing By Top Guesser And Fast Matka Result. Aaj Ka Satta Kalyan Fix
       Single Jodi Free Update Here You Find Top Matka Market Of India Kalyan Main Milan Rajdhani* *kalyan Matka Tips *fast Matka Result
-      *kalyan Main Rajdhani Matka Chart *Matka Guessing By <?= $this->config->item('site_domain'); ?> By App Best Matka Site By <?= $this->config->item('site_domain'); ?></h4>
+      *kalyan Main Rajdhani Matka Chart *Matka Guessing By <?= $this->config->item('site_domain'); ?> By App Best Matka Site By <?= $this->config->item('site_domain'); ?></p>
   </div>
 </div>
 <div class="container-fluid">
@@ -788,197 +800,210 @@ if ($meta) {
 </div>
 
 <style>
-.playmax-popup-overlay {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.7);
-  animation: fadeIn 0.3s ease-in;
-}
-
-.playmax-popup-content {
-  background: linear-gradient(135deg, #ffffff 0%, #ffe6f2 100%);
-  margin: 5% auto;
-  padding: 0;
-  border: 3px solid #ff006c;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: slideDown 0.4s ease-out;
-  position: relative; 
-}
-
-.playmax-popup-close {
-  color: #ff006c;
-  float: right;
-  font-size: 35px;
-  font-weight: bold;
-  position: absolute;
-  right: 15px;
-  top: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.playmax-popup-close:hover,
-.playmax-popup-close:focus {
-  color: #880e4f;
-  transform: rotate(90deg);
-}
-
-.playmax-popup-body {
-  padding: 30px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
+  .playmax-popup-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease-in;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
-/* Fancy Join Now Button Styles */
-.playmax-join-btn {
-  position: relative;
-  display: inline-block;
-  padding: 15px 40px;
-  background: linear-gradient(45deg, #ff006c, #ff5599, #ff006c);
-  background-size: 200% 200%;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255, 0, 108, 0.4);
-  transition: all 0.3s ease;
-  overflow: hidden;
-  animation: gradientShift 3s ease infinite, btnPulse 2s ease-in-out infinite;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.playmax-join-btn:hover {
-  transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 0, 108, 0.6);
-  background: linear-gradient(45deg, #ff5599, #ff006c, #ff5599);
-  color: #FFF;
-}
-
-.playmax-join-btn:active {
-  transform: scale(1.05) translateY(-1px);
-}
-
-.playmax-join-btn span:first-child {
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Shine effect */
-.playmax-btn-shine {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shine 3s infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes btnPulse {
-  0%, 100% {
-    box-shadow: 0 5px 15px rgba(255, 0, 108, 0.4);
-  }
-  50% {
-    box-shadow: 0 5px 25px rgba(255, 0, 108, 0.7), 0 0 30px rgba(255, 0, 108, 0.3);
-  }
-}
-
-@keyframes shine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 200%;
-  }
-}
-
-@media (max-width: 600px) {
   .playmax-popup-content {
-    width: 95%;
-    margin: 10% auto;
+    background: linear-gradient(135deg, #ffffff 0%, #ffe6f2 100%);
+    margin: 5% auto;
+    padding: 0;
+    border: 3px solid #ff006c;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.4s ease-out;
+    position: relative;
+  }
+
+  .playmax-popup-close {
+    color: #ff006c;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .playmax-popup-close:hover,
+  .playmax-popup-close:focus {
+    color: #880e4f;
+    transform: rotate(90deg);
   }
 
   .playmax-popup-body {
-    padding: 20px;
+    padding: 30px;
   }
 
-  .playmax-popup-body h2 {
-    font-size: 20px !important;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
-  .playmax-popup-body p {
-    font-size: 14px !important;
+  @keyframes slideDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
+  /* Fancy Join Now Button Styles */
   .playmax-join-btn {
-    padding: 12px 30px;
-    font-size: 16px;
+    position: relative;
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(45deg, #ff006c, #ff5599, #ff006c);
+    background-size: 200% 200%;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 0, 108, 0.4);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    animation: gradientShift 3s ease infinite, btnPulse 2s ease-in-out infinite;
+    border: 2px solid rgba(255, 255, 255, 0.3);
   }
-}
+
+  .playmax-join-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 0, 108, 0.6);
+    background: linear-gradient(45deg, #ff5599, #ff006c, #ff5599);
+    color: #FFF;
+  }
+
+  .playmax-join-btn:active {
+    transform: scale(1.05) translateY(-1px);
+  }
+
+  .playmax-join-btn span:first-child {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Shine effect */
+  .playmax-btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shine 3s infinite;
+  }
+
+  @keyframes gradientShift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes btnPulse {
+
+    0%,
+    100% {
+      box-shadow: 0 5px 15px rgba(255, 0, 108, 0.4);
+    }
+
+    50% {
+      box-shadow: 0 5px 25px rgba(255, 0, 108, 0.7), 0 0 30px rgba(255, 0, 108, 0.3);
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      left: -100%;
+    }
+
+    100% {
+      left: 200%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .playmax-popup-content {
+      width: 95%;
+      margin: 10% auto;
+    }
+
+    .playmax-popup-body {
+      padding: 20px;
+    }
+
+    .playmax-popup-body h2 {
+      font-size: 20px !important;
+    }
+
+    .playmax-popup-body p {
+      font-size: 14px !important;
+    }
+
+    .playmax-join-btn {
+      padding: 12px 30px;
+      font-size: 16px;
+    }
+  }
 </style>
 
 <script>
-// Show popup on page load
-window.addEventListener('load', function() {
-  // Check if popup should be shown (after 1 hour)
-  var lastShown = null;// localStorage.getItem('playmaxPopupLastShown');
-  var currentTime = new Date().getTime();
-  var oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+  // Show popup on page load
+  window.addEventListener('load', function() {
+    // Check if popup should be shown (after 1 hour)
+    var lastShown = null; // localStorage.getItem('playmaxPopupLastShown');
+    var currentTime = new Date().getTime();
+    var oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
 
-  if (!lastShown || (currentTime - lastShown) > oneHour) {
-    setTimeout(function() {
-      document.getElementById('playmaxPopup').style.display = 'block';
-      // Store the current time when popup is shown
-      localStorage.setItem('playmaxPopupLastShown', currentTime);
-    }, 100); // Show popup after 1 second
+    if (!lastShown || (currentTime - lastShown) > oneHour) {
+      setTimeout(function() {
+        document.getElementById('playmaxPopup').style.display = 'block';
+        // Store the current time when popup is shown
+        localStorage.setItem('playmaxPopupLastShown', currentTime);
+      }, 100); // Show popup after 1 second
+    }
+  });
+
+  // Close popup function
+  function closePlaymaxPopup() {
+    document.getElementById('playmaxPopup').style.display = 'none';
   }
-});
 
-// Close popup function
-function closePlaymaxPopup() {
-  document.getElementById('playmaxPopup').style.display = 'none';
-}
-
-// Close popup when clicking outside of it
-window.onclick = function(event) {
-  var popup = document.getElementById('playmaxPopup');
-  if (event.target == popup) {
-    closePlaymaxPopup();
+  // Close popup when clicking outside of it
+  window.onclick = function(event) {
+    var popup = document.getElementById('playmaxPopup');
+    if (event.target == popup) {
+      closePlaymaxPopup();
+    }
   }
-}
 </script>
