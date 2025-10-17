@@ -987,7 +987,7 @@ if ($meta) {
 
     if (!lastShown || (currentTime - lastShown) > oneHour) {
       setTimeout(function() {
-        document.getElementById('playmaxPopup').style.display = 'block';
+        //document.getElementById('playmaxPopup').style.display = 'block';
         // Store the current time when popup is shown
         localStorage.setItem('playmaxPopupLastShown', currentTime);
       }, 100); // Show popup after 1 second
