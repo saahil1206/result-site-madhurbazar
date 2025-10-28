@@ -68,6 +68,9 @@ $route['AllPatti/index'] = 'AllPatti/index';
 $route['Jodi/index'] = 'Jodi/index';
 $route['panel-chart/(:any)'] = 'home/panel_chart_by_slug/$1';
 $route['jodi-chart/(:any)'] = 'home/jodi_chart_by_slug/$1';
+$route['about-us'] = 'home/about_us';
+$route['terms-and-conditions'] = 'home/term_condition';
+$route['privacy-policy'] = 'home/privacy_policy';
 $route['(:any)'] = 'home/error';
 
 // $route['owner'] = 'auth/login';

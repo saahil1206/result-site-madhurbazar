@@ -6,6 +6,13 @@
           <p style="font-family: 'Raleway', Calibri;font-size: 17px;text-align: center;color: yellow;font-weight: 600;margin-top: 10px;margin-bottom: 10px;">! DISCLAIMER !</p>
           <p style="font-size: 12px;text-align: center;color: white;font-family: sans-serif;">Viewing This WebSite Is On Your Own Risk.. All The information Shown On Website Is Sponsored And We Warn You That this is only for entertainment purpose... We Respect All Country Rules/Laws... If You Not Agree With Our Site. Please Quit Our Site Right Now.</p>
         </div>
+        <div class="footer-links">
+          <a href="<?php echo base_url()?>about-us">About Us</a>
+          <span>|</span>
+          <a href="<?php echo base_url()?>terms-and-conditions">Terms & Conditions</a>
+          <span>|</span>
+          <a href="<?php echo base_url()?>privacy-policy">Privacy Policy</a>
+        </div>
         <p style="color:white;font-family: 'Raleway', Calibri;text-align:center;padding-bottom:5px;padding-top:15px;font-size:16px;margin-top: 10px;margin-bottom: 10px;font-weight: 500;line-height: 1.1;"> 
           Copyright © <?php echo date('Y')?> <?= $this->config->item('site_domain'); ?>.  All Right Reserved.</p>
       </div>

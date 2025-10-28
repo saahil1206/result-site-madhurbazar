@@ -52,6 +52,18 @@ error_reporting(0);
     font-size: 20px;
     font-style: italic;
   }
+  .footer-links a {
+    color: yellow;
+    margin: 0 10px;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none;
+    font-style: normal;
+  }
+  .footer-links a:hover {
+    color: yellow;
+    text-decoration: underline !important;
+  }
 </style>
 <style>
   * {

@@ -156,4 +156,37 @@ class Home extends CI_Controller
 
 		$this->load->view('home/404');
 	}
+
+	public function about_us()
+	{
+		$this->load->model("Model_home");
+		$data["flotting_url"] = $this->Model_home->getFlottingUrl();
+		$data['meta'] = $this->Model_home->get_meta(0, 'about-us');
+
+		$this->load->view('home/header', $data);
+		$this->load->view('home/about_us', $data);
+		$this->load->view('home/footer', $data);
+	}
+
+	public function term_condition()
+	{
+		$this->load->model("Model_home");
+		$data["flotting_url"] = $this->Model_home->getFlottingUrl();
+		$data['meta'] = $this->Model_home->get_meta(0, 'term-condition');
+
+		$this->load->view('home/header', $data);
+		$this->load->view('home/term_condition', $data);
+		$this->load->view('home/footer', $data);
+	}
+
+	public function privacy_policy()
+	{
+		$this->load->model("Model_home");
+		$data["flotting_url"] = $this->Model_home->getFlottingUrl();
+		$data['meta'] = $this->Model_home->get_meta(0, 'privacy-policy');
+
+		$this->load->view('home/header', $data);
+		$this->load->view('home/privacy_policy', $data);
+		$this->load->view('home/footer', $data);
+	}
 }
