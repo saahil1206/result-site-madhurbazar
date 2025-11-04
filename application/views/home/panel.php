@@ -661,6 +661,9 @@
 	<button onclick="$('html, body').animate({scrollTop: $('#bottom-div').offset().top}, 200);" class="button2">
 		Go to Bottom
 	</button>
+	<a href="<?php echo base_url() ?>" class="button2">
+		Home
+	</a>
 </center>
 
 <div class="container-fluid">
